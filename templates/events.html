@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<!-- ===== HERO BANNER ===== -->
+<section class="section" style="padding-top: 8rem; padding-bottom: 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(0,78,100,0.95) 0%, rgba(10,10,26,0.98) 100%);">
+    <div class="hero-gradient-mesh" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; pointer-events:none;"></div>
+    <div class="container text-center" style="position: relative; z-index: 2; color: white;">
+        <span style="background: rgba(255, 107, 53, 0.15); color: var(--primary); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Join Our Action</span>
+        <h1 class="gradient-text" style="font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 1.5rem 0 1rem;">Campaigns & Drives</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">Be a part of our scheduled drives or browse memories from our successful past initiatives.</p>
+    </div>
+</section>
+
+<!-- ===== EVENTS LISTING ===== -->
+<section class="section" style="background: var(--bg);">
+    <div class="container">
+        <!-- Filter Bar -->
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;">
+            <button class="btn btn-primary btn-sm" id="btnFilterUpcoming" onclick="filterEvents('upcoming')">Upcoming Drives</button>
+            <button class="btn btn-secondary btn-sm" id="btnFilterPast" onclick="filterEvents('past')">Past Initiatives</button>
+        </div>
+
+        <!-- Events Grid -->
+        <div id="eventsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            <!-- Loaded dynamically from API -->
+            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                <div class="loader-spinner" style="margin: 0 auto 1rem;"></div>
+                <p style="color: var(--text-secondary);">Loading campaign database...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PHOTO GALLERY ===== -->
+<section class="section" style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h2 class="section-title">Moments of Hope</h2>
+            <p class="section-subtitle">Visual highlights from our recent humanitarian projects across the country.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Filled by JS -->
+            <div class="gallery-item" onclick="openLightbox(0)">
+                <img src="{{ url_for('static', filename='assets/images/education.png') }}" alt="Education Drive Lucknow">
+                <div class="gallery-overlay">
+                    <h4>Education Drive</h4>
+                    <p>Lucknow, Uttar Pradesh</p>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(1)">
+                <img src="{{ url_for('static', filename='assets/images/healthcare.png') }}" alt="Rural Health Camp Mumbai">
+                <div class="gallery-overlay">
+                    <h4>Rural Health Camp</h4>
+                    <p>Mumbai, Maharashtra</p>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(2)">
+                <img src="{{ url_for('static', filename='assets/images/environment.png') }}" alt="Tree Plantation Delhi">
+                <div class="gallery-overlay">
+                    <h4>Tree Plantation Drive</h4>
+                    <p>Delhi NCR</p>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(3)">
+                <img src="{{ url_for('static', filename='assets/images/food.png') }}" alt="Food distribution Kanpur">
+                <div class="gallery-overlay">
+                    <h4>Annapurna Food Drive</h4>
+                    <p>Kanpur, Uttar Pradesh</p>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(4)">
+                <img src="{{ url_for('static', filename='assets/images/women.png') }}" alt="Sewing Workshop Pune">
+                <div class="gallery-overlay">
+                    <h4>Sewing Skill Workshop</h4>
+                    <p>Pune, Maharashtra</p>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(5)">
+                <img src="{{ url_for('static', filename='assets/images/team.png') }}" alt="NayePankh Volunteer Team">
+                <div class="gallery-overlay">
+                    <h4>Volunteer Team Annual Meet</h4>
+                    <p>NayePankh Headquarters</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== LIGHTBOX MODAL ===== -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</button>
+    <button class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</button>
+    <div class="lightbox-content">
+        <img id="lightboxImg" src="" alt="Zoomed view">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+<script>
+    let allEvents = [];
+    let activeFilter = 'upcoming';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/events')
+            .then(res => res.json())
+            .then(data => {
+                allEvents = data;
+                renderEvents();
+            })
+            .catch(err => {
+                console.error("Failed to load events", err);
+                document.getElementById('eventsGrid').innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--danger);">
+                        <p>⚠️ Failed to load campaign database. Please check your server connection.</p>
+                    </div>
+                `;
+            });
+    });
+
+    function renderEvents() {
+        const grid = document.getElementById('eventsGrid');
+        grid.innerHTML = '';
+        
+        const todayStr = new Date().toISOString().split('T')[0];
+        
+        const filtered = allEvents.filter(e => {
+            if (activeFilter === 'upcoming') {
+                return e.date >= todayStr;
+            } else {
+                return e.date < todayStr;
+            }
+        });
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0;">No ${activeFilter} campaigns found.</p>
+                </div>
+            `;
+            return;
+        }
+
+        filtered.forEach(e => {
+            // Check if we have dynamic image or fallbacks
+            let imagePath = e.image_url;
+            if (imagePath.includes('education-drive.jpg') || imagePath.includes('education.jpg')) imagePath = '/static/assets/images/education.png';
+            else if (imagePath.includes('tree') || imagePath.includes('plantation')) imagePath = '/static/assets/images/environment.png';
+            else if (imagePath.includes('health') || imagePath.includes('camp')) imagePath = '/static/assets/images/healthcare.png';
+            else if (imagePath.includes('food') || imagePath.includes('distribution')) imagePath = '/static/assets/images/food.png';
+            else if (imagePath.includes('blood') || imagePath.includes('donation')) imagePath = '/static/assets/images/healthcare.png';
+            else if (imagePath.includes('women') || imagePath.includes('empowerment')) imagePath = '/static/assets/images/women.png';
+            else if (imagePath.includes('digital') || imagePath.includes('literacy')) imagePath = '/static/assets/images/education.png';
+            else if (imagePath.includes('community') || imagePath.includes('development')) imagePath = '/static/assets/images/community.png';
+            else imagePath = '/static/assets/images/hero-bg.png';
+
+            const card = document.createElement('div');
+            card.className = 'card tilt-card reveal-up';
+            card.innerHTML = `
+                <span class="card-badge">${e.date}</span>
+                <img src="${imagePath}" alt="${e.title}" class="card-image">
+                <div class="card-body">
+                    <h3 class="card-title">${e.title}</h3>
+                    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem;">📍 ${e.location}</p>
+                    <p class="card-text">${e.description}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">👥 ${e.volunteer_count}+ volunteering</span>
+                        <a href="/register" class="btn btn-primary btn-sm">Sign Up</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Init tilt on new cards
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(grid.querySelectorAll(".tilt-card"), {
+                max: 12,
+                speed: 300,
+                glare: true,
+                "max-glare": 0.25
+            });
+        }
+    }
+
+    function filterEvents(type) {
+        activeFilter = type;
+        const upBtn = document.getElementById('btnFilterUpcoming');
+        const pastBtn = document.getElementById('btnFilterPast');
+        
+        if (type === 'upcoming') {
+            upBtn.className = 'btn btn-primary btn-sm';
+            pastBtn.className = 'btn btn-secondary btn-sm';
+        } else {
+            upBtn.className = 'btn btn-secondary btn-sm';
+            pastBtn.className = 'btn btn-primary btn-sm';
+        }
+        renderEvents();
+    }
+</script>
+{% endblock %}

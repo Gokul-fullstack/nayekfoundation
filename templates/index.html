@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="hero">
+    <div class="hero-gradient-mesh"></div>
+    <div id="hero-particles" class="hero-particles"></div>
+    <div class="container hero-container">
+        <div class="hero-grid">
+            <div class="hero-left reveal-left">
+                <p class="hero-tagline-top">NayePankh Foundation</p>
+                <h1 class="hero-title">
+                    <span class="gradient-text" id="typed-output"></span>
+                </h1>
+                <p class="hero-tagline">Badalte Bharat Ki Nayi Tasveer — A New Picture of a Changing India</p>
+                <div class="hero-stats-mini">
+                    <span><strong>200,000+</strong> Lives Touched</span>
+                    <span class="divider">|</span>
+                    <span><strong>25,000+</strong> Animals Helped</span>
+                    <span class="divider">|</span>
+                    <span><strong>50+</strong> Cities</span>
+                </div>
+                <div class="hero-cta">
+                    <a href="/register" class="hero-btn hero-btn-primary">
+                        Become a Volunteer
+                    </a>
+                    <a href="#about" class="hero-btn hero-btn-secondary">
+                        Learn More ↓
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right reveal-right">
+                <div class="hero-visual-card tilt-card" data-tilt>
+                    <div class="hero-card-glow"></div>
+                    <img src="{{ url_for('static', filename='assets/images/team.png') }}" alt="NayePankh Volunteer Team" class="hero-visual-img" loading="eager">
+                    <div class="hero-card-overlay">
+                        <div class="hero-card-badge">National Network</div>
+                        <h4 class="hero-card-title">Volunteers in Action</h4>
+                        <p class="hero-card-text">Building a stronger India, one community at a time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="scroll-arrow">▼</div>
+    </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="section about-section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content reveal-left">
+                <p class="section-label">WHO WE ARE</p>
+                <h2 class="section-title">Empowering Communities, <span class="gradient-text">One Wing at a Time</span></h2>
+                <p class="about-text">
+                    Founded in 2020 during the COVID-19 pandemic by passionate young students, NayePankh Foundation 
+                    has grown into one of India's largest student-run NGOs. We believe every individual deserves 
+                    equal access to opportunities, dignity, and growth.
+                </p>
+                <p class="about-text">
+                    Our name "NayePankh" means "New Wings" in Hindi — symbolizing our mission to give wings to 
+                    those who need them most. Through education, healthcare, environment, and community initiatives, 
+                    we're building a brighter India.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🎓</span>
+                        <div>
+                            <h4>Education First</h4>
+                            <p>Holistic learning for underprivileged children</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🌱</span>
+                        <div>
+                            <h4>Youth-Driven</h4>
+                            <p>Run entirely by passionate young volunteers</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <span class="about-feature-icon">🤝</span>
+                        <div>
+                            <h4>Community Impact</h4>
+                            <p>Grassroots change across 50+ Indian cities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image reveal-right">
+                <div class="about-image-wrapper">
+                    <img src="{{ url_for('static', filename='assets/images/team.png') }}" alt="NayePankh Volunteer Team" loading="lazy">
+                    <div class="about-image-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== IMPACT STATS ===== -->
+<section class="section stats-section" id="impact">
+    <div class="container">
+        <p class="section-label text-center">OUR IMPACT</p>
+        <h2 class="section-title text-center">Numbers That <span class="gradient-text">Inspire Change</span></h2>
+        <p class="section-subtitle text-center">Every number represents a life touched, a dream nurtured, and a future brightened.</p>
+        <div class="stats-grid stagger-container">
+            <div class="stat-card glass-card stagger-item">
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" style="color: var(--primary); margin-bottom: 0.75rem;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="stat-number" data-count="10000">0</div>
+                <div class="stat-label">Active Volunteers</div>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin" style="color: var(--primary); margin-bottom: 0.75rem;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="stat-number" data-count="200">0</div>
+                <div class="stat-label">Cities Reached</div>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="color: var(--primary); margin-bottom: 0.75rem;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                </div>
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Events Conducted</div>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart" style="color: var(--primary); margin-bottom: 0.75rem;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </div>
+                <div class="stat-number" data-count="200000">0</div>
+                <div class="stat-label">Lives Impacted</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INITIATIVES ===== -->
+<section class="section initiatives-section" id="initiatives">
+    <div class="container">
+        <p class="section-label text-center">WHAT WE DO</p>
+        <h2 class="section-title text-center">Our <span class="gradient-text">Key Initiatives</span></h2>
+        <p class="section-subtitle text-center">From classrooms to communities, we're creating impact across multiple dimensions.</p>
+        <div class="initiatives-grid stagger-container">
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/education.png') }}" alt="Education Initiative" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(255,107,53,0.15); color: #FF6B35;">📚 Education</span>
+                    <h3 class="card-title">Education & Digital Literacy</h3>
+                    <p class="card-text">Providing holistic education incorporating life skills, mental health awareness, and experiential learning for underprivileged children.</p>
+                    <a href="/initiatives#education" class="card-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/healthcare.png') }}" alt="Healthcare Initiative" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(6,214,160,0.15); color: #06D6A0;">🏥 Healthcare</span>
+                    <h3 class="card-title">Health & Hygiene Camps</h3>
+                    <p class="card-text">Organizing health camps, blood donation drives, vaccination campaigns, and menstrual hygiene awareness across communities.</p>
+                    <a href="/initiatives#healthcare" class="card-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/environment.png') }}" alt="Environment Initiative" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(0,78,100,0.15); color: #004E64;">🌿 Environment</span>
+                    <h3 class="card-title">Tree Plantation & Clean Drives</h3>
+                    <p class="card-text">Leading tree plantation campaigns, cleanliness drives, and sustainability awareness programs for a greener future.</p>
+                    <a href="/initiatives#environment" class="card-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/food.png') }}" alt="Food Distribution" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(255,209,102,0.15); color: #e6a800;">🍽️ Food & Relief</span>
+                    <h3 class="card-title">Food Distribution & Relief</h3>
+                    <p class="card-text">Fighting hunger by providing free nutritious meals to underprivileged families and supporting 25,000+ stray animals.</p>
+                    <a href="/initiatives#food" class="card-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/women.png') }}" alt="Women Empowerment" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(239,71,111,0.15); color: #EF476F;">💪 Empowerment</span>
+                    <h3 class="card-title">Women Empowerment</h3>
+                    <p class="card-text">Skill development workshops, digital literacy programs, and awareness campaigns empowering women to achieve their potential.</p>
+                    <a href="/initiatives#women" class="card-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="card tilt-card stagger-item">
+                <img src="{{ url_for('static', filename='assets/images/community.png') }}" alt="Community Development" class="card-image" loading="lazy">
+                <div class="card-body">
+                    <span class="card-badge" style="background: rgba(255,107,53,0.15); color: #FF6B35;">🌟 Community</span>
+                    <h3 class="card-title">Community Development</h3>
+                    <p class="card-text">Clothing distribution, disaster relief, community building, and local impact projects creating lasting change at grassroots level.</p>
+                    <a href="/initiatives#community" class="card-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section how-section">
+    <div class="container">
+        <p class="section-label text-center">HOW TO JOIN</p>
+        <h2 class="section-title text-center">Three Steps to <span class="gradient-text">Make a Difference</span></h2>
+        <div class="steps-grid stagger-container">
+            <div class="step-card glass-card stagger-item">
+                <div class="step-number">01</div>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                </div>
+                <h3>Register</h3>
+                <p>Fill out a simple form with your details, skills, and interests. Takes less than 2 minutes.</p>
+            </div>
+            <div class="step-connector reveal-scale">→</div>
+            <div class="step-card glass-card stagger-item">
+                <div class="step-number">02</div>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                </div>
+                <h3>Get Matched</h3>
+                <p>Our AI matches you with the perfect initiative based on your skills, location, and availability.</p>
+            </div>
+            <div class="step-connector reveal-scale">→</div>
+            <div class="step-card glass-card stagger-item">
+                <div class="step-number">03</div>
+                <div class="step-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                </div>
+                <h3>Make Impact</h3>
+                <p>Start volunteering, attend events, and watch your contribution transform lives.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section testimonials-section" id="testimonials">
+    <div class="container">
+        <p class="section-label text-center">TESTIMONIALS</p>
+        <h2 class="section-title text-center">What Our <span class="gradient-text">Volunteers Say</span></h2>
+        <div class="testimonials-slider glass-card">
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"Joining NayePankh was the best decision of my college life. I learned leadership, teamwork, and the joy of giving back. The experience transformed me completely."</p>
+                    <div class="testimonial-author">Priya Sharma</div>
+                    <div class="testimonial-role">Volunteer, Education Initiative — Delhi</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"NayePankh gave me a platform to use my tech skills for social good. I built their event management system and saw how technology can amplify impact. Truly life-changing."</p>
+                    <div class="testimonial-author">Rahul Verma</div>
+                    <div class="testimonial-role">Tech Volunteer — Bangalore</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"As a first-year student, I was nervous about volunteering. But NayePankh's supportive community made me feel welcome from day one. Now I lead a team of 20 volunteers!"</p>
+                    <div class="testimonial-author">Ananya Patel</div>
+                    <div class="testimonial-role">Team Lead, Healthcare — Mumbai</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-quote">"The tree plantation drive we organized planted 500+ saplings in one day. Seeing the community come together was magical. NayePankh makes it easy to create real change."</p>
+                    <div class="testimonial-author">Karthik Iyer</div>
+                    <div class="testimonial-role">Environment Coordinator — Chennai</div>
+                </div>
+            </div>
+            <div class="testimonial-dots" id="testimonialDots"></div>
+            <button class="testimonial-prev" id="testimonialPrev">‹</button>
+            <button class="testimonial-next" id="testimonialNext">›</button>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VOLUNTEER MAP ===== -->
+<section class="section map-section" id="map-section">
+    <div class="container">
+        <p class="section-label text-center">OUR REACH</p>
+        <h2 class="section-title text-center">Volunteers Across <span class="gradient-text">India</span></h2>
+        <p class="section-subtitle text-center">Our network spans 50+ cities with passionate volunteers making a difference every day.</p>
+        <div class="map-wrapper glass-card reveal-up">
+            <div id="volunteer-map" class="map-container"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PHOTO GALLERY ===== -->
+<section class="section gallery-section" id="gallery">
+    <div class="container">
+        <p class="section-label text-center">GALLERY</p>
+        <h2 class="section-title text-center">Moments of <span class="gradient-text">Impact</span></h2>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/education.png') }}" alt="Education Drive" loading="lazy">
+                <div class="gallery-overlay"><p>Education Drive — Teaching Dreams</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/environment.png') }}" alt="Tree Plantation" loading="lazy">
+                <div class="gallery-overlay"><p>Tree Plantation — Growing Green</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/healthcare.png') }}" alt="Health Camp" loading="lazy">
+                <div class="gallery-overlay"><p>Health Camp — Caring Together</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/food.png') }}" alt="Food Distribution" loading="lazy">
+                <div class="gallery-overlay"><p>Food Distribution — No One Goes Hungry</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/women.png') }}" alt="Women Empowerment" loading="lazy">
+                <div class="gallery-overlay"><p>Women Empowerment — Strength in Unity</p></div>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='assets/images/team.png') }}" alt="Volunteer Team" loading="lazy">
+                <div class="gallery-overlay"><p>Our Team — Wings of Change</p></div>
+            </div>
+        </div>
+    </div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <button class="lightbox-prev" id="lightboxPrev">‹</button>
+        <img src="" alt="Gallery Image" id="lightboxImage">
+        <button class="lightbox-next" id="lightboxNext">›</button>
+    </div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-card glass-card reveal-scale">
+            <h2 class="cta-title">Ready to Give <span class="gradient-text">Wings to Dreams?</span></h2>
+            <p class="cta-text">Join 10,000+ volunteers who are transforming lives across India. Your skills, passion, and time can make a real difference.</p>
+            <div class="cta-buttons">
+                <a href="/register" class="btn btn-primary btn-lg">Join as Volunteer</a>
+                <a href="/contact" class="btn btn-secondary btn-lg">Get in Touch</a>
+            </div>
+            <div class="cta-trust">
+                <span>✅ Registered NGO</span>
+                <span>✅ 80G Tax Exempt</span>
+                <span>✅ 12A Certified</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/particles-config.js') }}"></script>
+<script src="{{ url_for('static', filename='js/typed-hero.js') }}"></script>
+<script src="{{ url_for('static', filename='js/gsap-scroll.js') }}"></script>
+<script src="{{ url_for('static', filename='js/tilt-cards.js') }}"></script>
+<script src="{{ url_for('static', filename='js/counters.js') }}"></script>
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>
+// Testimonial slider
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('testimonialsTrack');
+    const cards = track ? track.querySelectorAll('.testimonial-card') : [];
+    const dotsContainer = document.getElementById('testimonialDots');
+    const prevBtn = document.getElementById('testimonialPrev');
+    const nextBtn = document.getElementById('testimonialNext');
+    let currentSlide = 0;
+    
+    if (!track || cards.length === 0) return;
+    
+    // Create dots
+    cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        document.querySelectorAll('.testimonial-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === index);
+        });
+    }
+    
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide > 0 ? currentSlide - 1 : cards.length - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide < cards.length - 1 ? currentSlide + 1 : 0));
+    
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+        goToSlide(currentSlide < cards.length - 1 ? currentSlide + 1 : 0);
+    }, 5000);
+});
+</script>
+{% endblock %}

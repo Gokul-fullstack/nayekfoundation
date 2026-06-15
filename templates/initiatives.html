@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}Our Initiatives{% block title_suffix %} | Giving Wings to Every Dream{% endblock %}{% endblock %}
+
+{% block content %}
+<!-- ===== HERO BANNER ===== -->
+<section class="section" style="padding-top: 8rem; padding-bottom: 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(255,107,53,0.85) 0%, rgba(10,10,26,0.98) 100%);">
+    <div class="hero-gradient-mesh" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; pointer-events:none;"></div>
+    <div class="container text-center" style="position: relative; z-index: 2; color: white;">
+        <span style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Our Campaigns</span>
+        <h1 style="color: white; font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 1.5rem 0 1rem;">Making Real-World Impact</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">From rural classrooms to city green zones, discover how NayePankh Foundation creates sustainable change across diverse sectors.</p>
+    </div>
+</section>
+
+<!-- ===== INITIATIVES DETAILS ===== -->
+<section class="section" style="background: var(--bg);">
+    <div class="container" style="display: flex; flex-direction: column; gap: 6rem;">
+        
+        <!-- Initiative 1: Education -->
+        <div class="initiative-row" id="education" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left">
+                <img src="{{ url_for('static', filename='assets/images/education.png') }}" alt="Education Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Flagship Program</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Shiksha Path (Shiksha Abhiyaan)</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">At NayePankh, we believe that education is the fundamental ticket to breaking generational poverty. Under our 'Shiksha Path' campaign, we set up community classrooms, distribute stationery kits, and sponsor school admissions for children living in slum areas and rural areas.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">25,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Stationery Kits Distributed</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">150+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Schooled Children Sponsored</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Support this Initiative</a>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border);">
+
+        <!-- Initiative 2: Healthcare -->
+        <div class="initiative-row" id="healthcare" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left" style="order: 2;">
+                <img src="{{ url_for('static', filename='assets/images/healthcare.png') }}" alt="Healthcare Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right" style="order: 1;">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Community Support</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Swasthya Seva Camps</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">We conduct free medical camps, checkups, and distribute basic medicines in marginalized communities. In addition, our team organizes workshops focusing heavily on female menstrual hygiene, distribution of sanitary napkins, and nutritional guidance for new mothers.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">12,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Sanitary Pads Distributed</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">40+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Rural Health Camps Setup</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Join Medical Camps</a>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border);">
+
+        <!-- Initiative 3: Environment -->
+        <div class="initiative-row" id="environment" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left">
+                <img src="{{ url_for('static', filename='assets/images/environment.png') }}" alt="Environment Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Eco Drive</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Go Green Plantation</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Climate change demands swift on-ground restoration. NayePankh volunteers organize regular tree-plantation campaigns across urban centers to expand the green cover, alongside raising local awareness on solid waste segregation and plastic pollution reduction.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">5,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Saplings Planted</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">20+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Cleanliness Drives Run</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Volunteer for Tree Drives</a>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border);">
+
+        <!-- Initiative 4: Food Distribution -->
+        <div class="initiative-row" id="food" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left" style="order: 2;">
+                <img src="{{ url_for('static', filename='assets/images/food.png') }}" alt="Food Distribution Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right" style="order: 1;">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Hunger Relief</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Annapurna Sewa</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">No one should sleep on an empty stomach. Our volunteers distribute warm, freshly cooked meals and dry ration kits to construction workers, pavement dwellers, and low-income families during festive seasons and critical times.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">150,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Meals Served</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">8,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Ration Kits Delivered</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Join Food Drives</a>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border);">
+
+        <!-- Initiative 5: Women Empowerment -->
+        <div class="initiative-row" id="women" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left">
+                <img src="{{ url_for('static', filename='assets/images/women.png') }}" alt="Women Empowerment Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Skills & Dignity</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Nari Shakti Vocational Centers</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Empowering women with skills guarantees the upliftment of entire households. We host vocational training programs in tailoring, sewing, computer basics, and handcrafts, allowing rural and slum women to secure home-based micro-employment and financial independence.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">2,500+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Women Trained</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">12+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Sewing Hubs Set Up</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Empower Women</a>
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border);">
+
+        <!-- Initiative 6: Community Development -->
+        <div class="initiative-row" id="community" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center;">
+            <div class="reveal-left" style="order: 2;">
+                <img src="{{ url_for('static', filename='assets/images/community.png') }}" alt="Community Development Campaign" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); width: 100%; object-fit: cover; height: 380px;">
+            </div>
+            <div class="reveal-right" style="order: 1;">
+                <span style="color: var(--primary); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;">Grassroots Mobilization</span>
+                <h2 style="font-weight: 800; font-size: 2.2rem; margin: 0.5rem 0 1.2rem;">Community Development & Relief</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">We support marginalized families through clothes donation drives, blanket distribution campaigns during harsh winters, and relief rehabilitation programs during natural calamities. We also build community halls and local centers to facilitate social gathering, learning, and local welfare meetings.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">10,000+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Clothes & Blankets Distributed</p>
+                    </div>
+                    <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+                        <h4 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">15+</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Disaster Relief Camps Administered</p>
+                    </div>
+                </div>
+                <a href="/register" class="btn btn-primary">Join Community Outreach</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.utils.toArray('.reveal-left').forEach(elem => {
+                gsap.fromTo(elem, 
+                    { x: -60, opacity: 0 },
+                    { 
+                        x: 0, 
+                        opacity: 1, 
+                        duration: 0.8, 
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+
+            gsap.utils.toArray('.reveal-right').forEach(elem => {
+                gsap.fromTo(elem, 
+                    { x: 60, opacity: 0 },
+                    { 
+                        x: 0, 
+                        opacity: 1, 
+                        duration: 0.8, 
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+        }
+    });
+</script>
+{% endblock %}

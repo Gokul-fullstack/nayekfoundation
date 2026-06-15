@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NayePankh Foundation - Giving Wings to Every Dream. Join 10,000+ volunteers transforming lives across India through education, healthcare, and community development.">
+    <meta name="keywords" content="NayePankh Foundation, NGO, Volunteer, India, Education, Healthcare, Environment">
+    <meta name="author" content="NayePankh Foundation">
+    <title>{% block title %}NayePankh Foundation{% endblock %} | Giving Wings to Every Dream</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">NayePankh Foundation</p>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-logo">
+                <span class="gradient-text">🕊️ NayePankh</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" data-section="hero">Home</a></li>
+                <li><a href="/about" data-section="about">About</a></li>
+                <li><a href="/initiatives" data-section="initiatives">Initiatives</a></li>
+                <li><a href="/events" data-section="events">Events</a></li>
+                <li><a href="/contact" data-section="contact">Contact</a></li>
+                <li>
+                    <a href="/register" class="btn btn-primary btn-sm nav-cta">Join Us</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="footer-title gradient-text">🕊️ NayePankh Foundation</h3>
+                    <p class="footer-desc">Giving Wings to Every Dream. A youth-driven NGO transforming lives across India through education, healthcare, and community development.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/nayepankhfoundation" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+                        <a href="https://linkedin.com/company/nayepankhfoundation" target="_blank" rel="noopener" aria-label="LinkedIn">💼</a>
+                        <a href="https://facebook.com/nayepankhfoundation" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+                        <a href="https://youtube.com/@nayepankhfoundation" target="_blank" rel="noopener" aria-label="YouTube">▶️</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/initiatives">Our Initiatives</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/register">Volunteer</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="/initiatives#education">Education</a></li>
+                        <li><a href="/initiatives#healthcare">Healthcare</a></li>
+                        <li><a href="/initiatives#environment">Environment</a></li>
+                        <li><a href="/initiatives#food">Food Distribution</a></li>
+                        <li><a href="/initiatives#women">Women Empowerment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li>📧 contact@nayepankh.com</li>
+                        <li>📞 +91-8318500748</li>
+                        <li>🌐 nayepankh.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4 class="footer-title" style="margin-top:1rem;">Newsletter</h4>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!', 'success');">
+                            <input type="email" class="form-input" placeholder="Your email" required>
+                            <button type="submit" class="btn btn-primary btn-sm">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NayePankh Foundation. All rights reserved. | Made with ❤️ by volunteers</p>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+    <!-- Chatbot -->
+    <button class="chatbot-fab" id="chatbotFab" aria-label="Open AI Chat">
+        💬
+    </button>
+    <div class="chatbot-window glass" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <span class="chatbot-avatar">🤖</span>
+                <div>
+                    <h4>NayePankh AI</h4>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chat-suggestions" id="chatSuggestions">
+            <button class="chat-suggestion" data-msg="How can I volunteer?">🙋 How to volunteer?</button>
+            <button class="chat-suggestion" data-msg="Tell me about NayePankh's mission">🎯 Our Mission</button>
+            <button class="chat-suggestion" data-msg="What internships are available?">💼 Internships</button>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
+            <button id="chatSend" aria-label="Send message">➤</button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">🚀</button>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal glass">
+            <button class="modal-close" id="modalClose">✕</button>
+            <h3 class="modal-title" id="modalTitle">Confirm Action</h3>
+            <p class="modal-text" id="modalText">Are you sure?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary btn-sm" id="modalCancel">Cancel</button>
+                <button class="btn btn-primary btn-sm" id="modalConfirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CDN Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Our JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cursor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/chatbot-ui.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

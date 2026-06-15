@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<section class="section auth-section" style="padding-top: 8rem;">
+    <div class="container">
+        <div class="auth-wrapper">
+            <div class="auth-card glass-card reveal-up">
+                <h1 class="section-title text-center">Join <span class="gradient-text">NayePankh</span></h1>
+                <p class="section-subtitle text-center" style="margin-bottom:2rem;">Become a volunteer and start making a difference today.</p>
+
+                <!-- Wizard Progress -->
+                <div class="wizard-progress">
+                    <div class="wizard-step active" data-step="1">
+                        <div class="wizard-step-number">1</div>
+                        <span class="wizard-step-label">Personal Info</span>
+                    </div>
+                    <div class="wizard-step" data-step="2">
+                        <div class="wizard-step-number">2</div>
+                        <span class="wizard-step-label">Skills</span>
+                    </div>
+                    <div class="wizard-step" data-step="3">
+                        <div class="wizard-step-number">3</div>
+                        <span class="wizard-step-label">Availability</span>
+                    </div>
+                    <div class="wizard-step" data-step="4">
+                        <div class="wizard-step-number">4</div>
+                        <span class="wizard-step-label">Review</span>
+                    </div>
+                    <div class="wizard-progress-bar"><div class="wizard-progress-fill" id="wizardProgressFill"></div></div>
+                </div>
+
+                <form id="register-form" novalidate>
+                    <!-- Step 1: Personal Info -->
+                    <div class="wizard-panel active" data-panel="1">
+                        <h3 class="wizard-panel-title">Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-input" id="regName" name="name" placeholder="Enter your full name" required>
+                                <span class="form-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Age *</label>
+                                <input type="number" class="form-input" id="regAge" name="age" placeholder="Your age" min="14" max="80" required>
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-input" id="regEmail" name="email" placeholder="you@example.com" required>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password *</label>
+                            <div class="password-wrapper">
+                                <input type="password" class="form-input" id="regPassword" name="password" placeholder="Min 6 characters" minlength="6" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword('regPassword', this)">👁️</button>
+                            </div>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-input" id="regPhone" name="phone" placeholder="+91 XXXXX XXXXX" pattern="[0-9]{10}" required>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="wizard-actions">
+                            <div></div>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Skills -->
+                    <div class="wizard-panel" data-panel="2">
+                        <h3 class="wizard-panel-title">Skills & Interests</h3>
+                        <div class="form-group">
+                            <label class="form-label">Select Your Skills *</label>
+                            <div class="skills-grid" id="skillsGrid">
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Python"> Python</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="React"> React</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Flask"> Flask</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Data Analysis"> Data Analysis</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Machine Learning"> Machine Learning</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="UI/UX Design"> UI/UX Design</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Content Writing"> Content Writing</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Social Media"> Social Media</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Fundraising"> Fundraising</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Teaching"> Teaching</label>
+                                <label class="skill-chip"><input type="checkbox" name="skills" value="Event Management"> Event Mgmt</label>
+                            </div>
+                            <span class="form-error" id="skillsError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Short Bio</label>
+                            <textarea class="form-input" id="regBio" name="bio" placeholder="Tell us about yourself, your motivation, and what you hope to achieve..." rows="4"></textarea>
+                        </div>
+                        <div class="wizard-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Availability -->
+                    <div class="wizard-panel" data-panel="3">
+                        <h3 class="wizard-panel-title">Availability & Location</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">City *</label>
+                                <input type="text" class="form-input" id="regCity" name="city" placeholder="Your city" required>
+                                <span class="form-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">State *</label>
+                                <select class="form-input form-select" id="regState" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option>Andhra Pradesh</option><option>Arunachal Pradesh</option>
+                                    <option>Assam</option><option>Bihar</option><option>Chhattisgarh</option>
+                                    <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+                                    <option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option>
+                                    <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+                                    <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+                                    <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+                                    <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+                                    <option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option>
+                                    <option>Uttarakhand</option><option>West Bengal</option>
+                                    <option>Delhi</option><option>Chandigarh</option>
+                                </select>
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Availability *</label>
+                            <div class="availability-options">
+                                <label class="radio-card"><input type="radio" name="availability" value="Weekdays" required> Weekdays</label>
+                                <label class="radio-card"><input type="radio" name="availability" value="Weekends"> Weekends</label>
+                                <label class="radio-card"><input type="radio" name="availability" value="Both"> Both</label>
+                                <label class="radio-card"><input type="radio" name="availability" value="Flexible"> Flexible</label>
+                            </div>
+                            <span class="form-error" id="availError"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="getLocation()">Auto-detect Location</button>
+                            <input type="hidden" id="regLat" name="latitude">
+                            <input type="hidden" id="regLng" name="longitude">
+                            <span class="location-status" id="locationStatus"></span>
+                        </div>
+                        <div class="wizard-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Back</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Review →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review -->
+                    <div class="wizard-panel" data-panel="4">
+                        <h3 class="wizard-panel-title">Review & Submit</h3>
+                        <div class="review-card glass-card">
+                            <h4>Personal Info</h4>
+                            <div class="review-grid" id="reviewPersonal"></div>
+                        </div>
+                        <div class="review-card glass-card">
+                            <h4>Skills & Bio</h4>
+                            <div class="review-grid" id="reviewSkills"></div>
+                        </div>
+                        <div class="review-card glass-card">
+                            <h4>Availability & Location</h4>
+                            <div class="review-grid" id="reviewAvailability"></div>
+                        </div>
+                        <div class="form-group" style="margin-top:1.5rem;">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms" required>
+                                I agree to NayePankh Foundation's terms and conditions and commit to volunteering with integrity.
+                            </label>
+                        </div>
+                        <div class="wizard-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Back</button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Submit Application</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal glass" style="text-align:center;">
+        <div class="success-animation">
+            <div class="success-checkmark">✅</div>
+        </div>
+        <h3>Welcome to NayePankh!</h3>
+        <p>Your volunteer application has been submitted successfully. Our team will review it shortly.</p>
+        <a href="/dashboard" class="btn btn-primary" style="margin-top:1.5rem;">Go to Dashboard →</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+<script>
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    if (input.type === 'password') { input.type = 'text'; btn.textContent = '🙈'; }
+    else { input.type = 'password'; btn.textContent = '👁️'; }
+}
+function getLocation() {
+    const status = document.getElementById('locationStatus');
+    if (navigator.geolocation) {
+        status.textContent = 'Detecting...';
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                document.getElementById('regLat').value = pos.coords.latitude;
+                document.getElementById('regLng').value = pos.coords.longitude;
+                status.textContent = '✅ Location detected!';
+                status.style.color = 'var(--success)';
+            },
+            () => { status.textContent = '⚠️ Could not detect. That\'s okay!'; status.style.color = 'var(--warning)'; }
+        );
+    } else { status.textContent = '⚠️ Geolocation not supported'; }
+}
+</script>
+{% endblock %}

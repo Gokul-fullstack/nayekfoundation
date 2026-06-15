@@ -1,0 +1,261 @@
+/* ============================================================
+   NayePankh Foundation — 3D Volunteer Nexus
+   Core Design System  ·  main.css
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* ── CSS Custom Properties ────────────────────────────────── */
+:root {
+  /* Brand Palette */
+  --primary:        #FF6B35;
+  --primary-dark:   #E85D26;
+  --primary-light:  #FF8C5A;
+  --secondary:      #004E64;
+  --accent:         #FFD166;
+  --success:        #06D6A0;
+  --warning:        #FFD166;
+  --danger:         #EF476F;
+
+  /* Surfaces — Light (default) */
+  --bg:             #fafafa;
+  --surface:        #ffffff;
+  --surface-hover:  #f0f0f5;
+  --text:           #1a1a2e;
+  --text-secondary: #555568;
+  --text-muted:     #8888a0;
+
+  /* Borders & Elevation */
+  --border:         rgba(0, 0, 0, 0.08);
+  --shadow:         0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg:      0 12px 40px rgba(0, 0, 0, 0.12);
+
+  /* Radii */
+  --radius-sm:      8px;
+  --radius-md:      16px;
+  --radius-lg:      24px;
+  --radius-xl:      32px;
+
+  /* Typography */
+  --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:   'Outfit', var(--font-body);
+
+  /* Motion */
+  --transition-fast:   0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow:   0.5s ease;
+
+  /* Glassmorphism */
+  --glass-bg:       rgba(255, 255, 255, 0.55);
+  --glass-border:   rgba(255, 255, 255, 0.35);
+  --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #FFD166 100%);
+  --gradient-hero:    radial-gradient(ellipse at 20% 50%, rgba(255, 107, 53, 0.35) 0%, transparent 50%),
+                      radial-gradient(ellipse at 80% 30%, rgba(0, 78, 100, 0.30) 0%, transparent 50%),
+                      radial-gradient(ellipse at 50% 80%, rgba(10, 10, 26, 0.95) 0%, #0a0a1a 100%);
+
+  /* Z-indexes */
+  --z-nav:    1000;
+  --z-modal:  2000;
+  --z-toast:  3000;
+  --z-cursor: 9999;
+}
+
+/* ── Dark Theme ───────────────────────────────────────────── */
+[data-theme='dark'] {
+  --bg:             #0a0a1a;
+  --surface:        #1a1a2e;
+  --surface-hover:  #25253d;
+  --text:           #eaeaef;
+  --text-secondary: #a0a0b8;
+  --text-muted:     #6a6a80;
+  --border:         rgba(255, 255, 255, 0.08);
+  --shadow:         0 4px 12px rgba(0, 0, 0, 0.30);
+  --shadow-lg:      0 12px 40px rgba(0, 0, 0, 0.45);
+  --glass-bg:       rgba(255, 255, 255, 0.06);
+  --glass-border:   rgba(255, 255, 255, 0.10);
+  --glass-shadow:   0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ── CSS Reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition-slow),
+              color var(--transition-slow);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ── Typography ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.15rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 107, 53, 0.25);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: rgba(255, 107, 53, 0.25);
+  color: var(--text);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 107, 53, 0.3);
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 107, 53, 0.55);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 107, 53, 0.3) var(--bg);
+}
+
+/* ── Utility — Glass ─────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ── Utility — Gradient Text ─────────────────────────────── */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Utility — Glow ──────────────────────────────────────── */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.3),
+              0 0 60px rgba(255, 107, 53, 0.10);
+}
+
+/* ── Layout ───────────────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ── Page Transition / Loading Body ──────────────────────── */
+body.loading {
+  overflow: hidden;
+}
+
+body.loading * {
+  animation-play-state: paused !important;
+}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block head %}
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    .admin-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 1024px) {
+        .admin-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard" style="padding-top: 8rem;">
+    <div class="container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="font-weight: 800; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 0.25rem;" class="gradient-text">Nexus Control Center</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 0;">Monitor registrations, view ML retention predictions, download PDF reports, and view national coordinate maps.</p>
+            </div>
+            <div class="dashboard-actions" style="display: flex; gap: 1rem;">
+                <button class="btn btn-secondary btn-sm" id="btnExportCSV">📥 Export CSV</button>
+                <button class="btn btn-primary btn-sm" id="btnGeneratePDF">📄 Generate Report</button>
+            </div>
+        </div>
+
+        <!-- Stats Widgets Grid -->
+        <div class="stats-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div class="stat-widget primary">
+                <div class="stat-widget-icon" style="background: rgba(255, 107, 53, 0.1); color: var(--primary);">👥</div>
+                <div>
+                    <div class="stat-widget-value" id="statTotalVolunteers">0</div>
+                    <div class="stat-widget-label">Total Volunteers</div>
+                </div>
+            </div>
+            <div class="stat-widget warning">
+                <div class="stat-widget-icon" style="background: rgba(255, 209, 102, 0.1); color: #e6a800;">⌛</div>
+                <div>
+                    <div class="stat-widget-value" id="statPendingApprovals">0</div>
+                    <div class="stat-widget-label">Pending Approvals</div>
+                </div>
+            </div>
+            <div class="stat-widget success">
+                <div class="stat-widget-icon" style="background: rgba(6, 214, 160, 0.1); color: var(--success);">📈</div>
+                <div>
+                    <div class="stat-widget-value" id="statAvgRetention">0%</div>
+                    <div class="stat-widget-label">Avg Retention Score</div>
+                </div>
+            </div>
+            <div class="stat-widget danger">
+                <div class="stat-widget-icon" style="background: rgba(239, 71, 111, 0.1); color: var(--danger);">🏙️</div>
+                <div>
+                    <div class="stat-widget-value" id="statActiveCities">0</div>
+                    <div class="stat-widget-label">Active Indian Cities</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-grid">
+            <!-- Left Side: Table & Map -->
+            <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                
+                <!-- Map Widget -->
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">🗺️ Live Volunteer Geographic Distribution</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Geographic lookup showing volunteer density colored by retention risk levels.</p>
+                    <div id="adminMap" style="height: 450px; border-radius: var(--radius-md); border: 1px solid var(--border); overflow: hidden; background: var(--bg); position: relative; z-index: 10;"></div>
+                </div>
+
+                <!-- Volunteer Management Table -->
+                <div class="dashboard-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                        <h3 class="dashboard-card-title" style="margin-bottom:0;">📋 Volunteer Database</h3>
+                        <div class="search-filter-bar" style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                            <input type="text" id="adminSearchInput" class="form-input btn-sm" placeholder="Search by name..." style="max-width: 220px; padding: 0.5rem 1rem;">
+                            <select id="filterStatus" class="form-select btn-sm" style="max-width: 140px; padding: 0.5rem 1.8rem 0.5rem 1rem;">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table class="data-table" id="adminVolunteersTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Skills</th>
+                                    <th>Status</th>
+                                    <th>Retention Score</th>
+                                    <th>Risk Level</th>
+                                    <th style="text-align: right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminVolunteersBody">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="adminPagination">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Analytics Charts -->
+            <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                
+                <!-- Skills Distribution Chart -->
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">📊 Volunteer Skills Breakdown</h3>
+                    <div style="position: relative; height: 260px; margin-top: 1.5rem;">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- City Breakdown Chart -->
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">🏙️ Top Active Cities</h3>
+                    <div style="position: relative; height: 260px; margin-top: 1.5rem;">
+                        <canvas id="citiesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Growth Over Time Chart -->
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">📈 Recruitment Growth</h3>
+                    <div style="position: relative; height: 260px; margin-top: 1.5rem;">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Model Accuracy Breakdown -->
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">🧠 ML Pipeline Performance</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Model comparison based on 10-fold cross-validation accuracy.</p>
+                    <div style="position: relative; height: 240px;">
+                        <canvas id="mlAccuracyChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.js"></script>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

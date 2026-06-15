@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<section class="section auth-section" style="padding-top: 8rem; min-height: 90vh; display: flex; align-items: center;">
+    <div class="container">
+        <div class="auth-wrapper glass" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; padding: 3rem; overflow: hidden; border-radius: var(--radius-xl);">
+            <!-- Left Side: Cinematic Banner -->
+            <div class="auth-banner" style="position: relative; height: 100%; min-height: 400px; border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(135deg, rgba(255, 107, 53, 0.8) 0%, rgba(0, 78, 100, 0.9) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; color: white;">
+                <div class="hero-gradient-mesh" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.3; pointer-events:none;"></div>
+                <div style="position: relative; z-index: 2;">
+                    <h2 style="color: white; font-weight: 800; font-size: 2.2rem; margin-bottom: 1rem;">Welcome Back!</h2>
+                    <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.05rem; line-height: 1.6; margin-bottom: 0;">"No one has ever become poor by giving." Login to manage your volunteer hours, view upcoming events, and check your AI-driven retention score.</p>
+                </div>
+            </div>
+
+            <!-- Right Side: Login Form -->
+            <div class="auth-form-container">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 class="gradient-text" style="font-weight: 800; font-size: 2rem; margin-bottom: 0.5rem;">Access Your Nexus</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Enter your credentials below to log in</p>
+                </div>
+
+                <form id="login-form" novalidate>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="name@example.com" required autocomplete="email">
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group" style="position: relative;">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+                        <button type="button" id="togglePassword" style="position: absolute; right: 1rem; top: 2.5rem; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; padding: 0.2rem;" aria-label="Toggle Password Visibility">👁️</button>
+                        <span class="form-error" id="passwordError"></span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; font-size: 0.9rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-secondary);">
+                            <input type="checkbox" id="rememberMe" style="width: 16px; height: 16px; accent-color: var(--primary);">
+                            Remember me
+                        </label>
+                        <a href="/register" style="font-weight: 600;">Need an account? Register</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

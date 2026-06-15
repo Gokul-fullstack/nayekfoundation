@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<!-- ===== HERO BANNER ===== -->
+<section class="section" style="padding-top: 8rem; padding-bottom: 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(0,78,100,0.95) 0%, rgba(10,10,26,0.98) 100%);">
+    <div class="hero-gradient-mesh" style="position: absolute; top:0; left:0; width:100%; height:100%; opacity:0.1; pointer-events:none;"></div>
+    <div class="container text-center" style="position: relative; z-index: 2;">
+        <span style="background: rgba(255, 107, 53, 0.15); color: var(--primary); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Our Identity</span>
+        <h1 class="gradient-text" style="font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 1.5rem 0 1rem;">Wings of Change</h1>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">NayePankh Foundation ("New Wings") is one of India's leading youth-driven NGOs, working relentlessly to empower the underprivileged and give wings to every dream.</p>
+    </div>
+</section>
+
+<!-- ===== STORY / TIMELINE SECTION ===== -->
+<section class="section" id="story" style="background: var(--bg);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h2 class="section-title">Our Incredible Journey</h2>
+            <p class="section-subtitle">A look back at how a small youth collective grew to impact thousands of lives across the country.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2020</div>
+                <div class="timeline-content">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 700;">The Seed is Sown</h3>
+                    <p style="margin-bottom: 0; color: var(--text-secondary);">Founded by a group of passionate students during the global pandemic, NayePankh began its operations with a single food distribution drive in Kanpur, UP, helping daily wage workers survive lockdowns.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 700;">Expanding Horizons</h3>
+                    <p style="margin-bottom: 0; color: var(--text-secondary);">Recognizing education as the primary tool for long-term empowerment, NayePankh launched its flagship education drives, providing free literacy and stationery kits to children living in slum areas.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-content">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 700;">Health & Sanitation</h3>
+                    <p style="margin-bottom: 0; color: var(--text-secondary);">We organized rural health check-up camps, distributed sanitary pads to slum women, and conducted awareness workshops on personal hygiene and nutritional health.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 700;">10,000+ Volunteers Strong</h3>
+                    <p style="margin-bottom: 0; color: var(--text-secondary);">With a growing digital presence, NayePankh expanded nationwide. Over 10,000 registered volunteers joined our campaigns, reaching multiple states and urban centres.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-content">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 700;">Smart Digital Volunteer Nexus</h3>
+                    <p style="margin-bottom: 0; color: var(--text-secondary);">Empowering our volunteers with technology. We launched the Volunteer Nexus platform featuring 3D interactions, predictive analytics, and conversational AI helper agents.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CORE VALUES SECTION ===== -->
+<section class="section" style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 5rem;">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">The principles that guide our choices, dictate our behavior, and inspire our daily work.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="glass-card text-center reveal-up" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="value-icon" style="margin-bottom: 1.5rem; display: flex; justify-content: center; color: var(--primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <h3 style="margin-bottom: 0.8rem; font-weight: 700;">Youth-Driven Energy</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">Led by the youth of India, we channel energy and innovative thinking towards solving age-old socio-economic challenges.</p>
+            </div>
+
+            <div class="glass-card text-center reveal-up" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="value-icon" style="margin-bottom: 1.5rem; display: flex; justify-content: center; color: var(--primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 style="margin-bottom: 0.8rem; font-weight: 700;">Absolute Transparency</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">We maintain complete openness in our donation records, project allocations, and volunteering results to build trust.</p>
+            </div>
+
+            <div class="glass-card text-center reveal-up" style="display: flex; flex-direction: column; align-items: center;">
+                <div class="value-icon" style="margin-bottom: 1.5rem; display: flex; justify-content: center; color: var(--primary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trending-up"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                </div>
+                <h3 style="margin-bottom: 0.8rem; font-weight: 700;">Sustainable Impact</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0;">We aim for long-term rehabilitation and empowerment, not just short-term relief, focusing heavily on education and healthcare.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PARALLAX DIVIDER ===== -->
+<div style="position: relative; height: 350px; background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('{{ url_for('static', filename='assets/images/team.png') }}'); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(10, 10, 26, 0.75);"></div>
+    <div class="container text-center" style="position: relative; z-index: 2; color: white;">
+        <h2 style="color: white; font-weight: 800; font-size: 2.2rem; margin-bottom: 1rem;">"Giving Wings to Every Dream"</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Our motto serves as a constant reminder that with support, mentorship, and opportunities, anyone can fly high.</p>
+    </div>
+</div>
+
+<!-- ===== TEAM SECTION ===== -->
+<section class="section" style="background: var(--bg);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 5rem;">
+            <h2 class="section-title">The Dream Team</h2>
+            <p class="section-subtitle">Meet the visionary leaders and project coordinators steering the NayePankh flight.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2.5rem;">
+            
+            <!-- Member 1 -->
+            <div class="card tilt-card reveal-up">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Prashant Shukla" class="card-image">
+                <div class="card-body text-center">
+                    <h3 class="card-title" style="margin-bottom: 0.2rem;">Prashant Shukla</h3>
+                    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; text-transform: uppercase;">President & Founder</p>
+                    <p class="card-text" style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">An engineer by qualification and social reformer by passion, driving nationwide campaigns.</p>
+                    <div style="display: flex; justify-content: center; gap: 0.8rem;">
+                        <a href="#" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="card tilt-card reveal-up">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Anjali Mishra" class="card-image">
+                <div class="card-body text-center">
+                    <h3 class="card-title" style="margin-bottom: 0.2rem;">Anjali Mishra</h3>
+                    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; text-transform: uppercase;">Head of Operations</p>
+                    <p class="card-text" style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">Supervises education programs and manages on-ground logistics across our regional divisions.</p>
+                    <div style="display: flex; justify-content: center; gap: 0.8rem;">
+                        <a href="#" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="card tilt-card reveal-up">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Vikram Malhotra" class="card-image">
+                <div class="card-body text-center">
+                    <h3 class="card-title" style="margin-bottom: 0.2rem;">Vikram Malhotra</h3>
+                    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; text-transform: uppercase;">Treasurer & HR Lead</p>
+                    <p class="card-text" style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">Handles fundraising audits and coordinates with corporate donors for campaign sponsorships.</p>
+                    <div style="display: flex; justify-content: center; gap: 0.8rem;">
+                        <a href="#" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="card tilt-card reveal-up">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&q=80" alt="Sneha Kapoor" class="card-image">
+                <div class="card-body text-center">
+                    <h3 class="card-title" style="margin-bottom: 0.2rem;">Sneha Kapoor</h3>
+                    <p style="color: var(--primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.8rem; text-transform: uppercase;">Volunteer Coordinator</p>
+                    <p class="card-text" style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.2rem;">Manages communications for our 10,000+ national volunteer community network.</p>
+                    <div style="display: flex; justify-content: center; gap: 0.8rem;">
+                        <a href="#" aria-label="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Simple activation of scroll reveals if GSAP is available
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.utils.toArray('.reveal-up').forEach(elem => {
+                gsap.fromTo(elem, 
+                    { y: 50, opacity: 0 },
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 0.8, 
+                        scrollTrigger: {
+                            trigger: elem,
+                            start: 'top 85%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            });
+        }
+        
+        // Initialize vanilla-tilt
+        if (typeof VanillaTilt !== 'undefined') {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.3
+            });
+        }
+    });
+</script>
+{% endblock %}
